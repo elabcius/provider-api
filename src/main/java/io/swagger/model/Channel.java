@@ -6,13 +6,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.model.TvProgramming;
+import org.springframework.hateoas.ResourceSupport;
 
 /**
  * Channel
  */
 @javax.annotation.Generated(value = "class io.swagger.codegen.languages.SpringCodegen", date = "2017-11-04T14:39:56.794Z")
 
-public class Channel   {
+public class Channel extends ResourceSupport {
   @JsonProperty("id")
   private String id = null;
 
@@ -35,11 +36,11 @@ public class Channel   {
    * @return id
   **/
   @ApiModelProperty(example = "d290f1ee-6c54-4b01-90e6-d701748f0851", required = true, value = "")
-  public String getId() {
+  public String getChannelId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setChannelId(String id) {
     this.id = id;
   }
 

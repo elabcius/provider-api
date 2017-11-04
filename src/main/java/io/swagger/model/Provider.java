@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.model.Channel;
+import org.springframework.hateoas.ResourceSupport;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +16,7 @@ import java.util.List;
  */
 @javax.annotation.Generated(value = "class io.swagger.codegen.languages.SpringCodegen", date = "2017-11-04T14:39:56.794Z")
 
-public class Provider   {
+public class Provider extends ResourceSupport {
   @JsonProperty("id")
   private String id = null;
 
@@ -37,11 +39,11 @@ public class Provider   {
    * @return id
   **/
   @ApiModelProperty(example = "d290f1ee-6c54-4b01-90e6-d701748f0851", required = true, value = "")
-  public String getId() {
+  public String getProviderId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setProviderId(String id) {
     this.id = id;
   }
 
