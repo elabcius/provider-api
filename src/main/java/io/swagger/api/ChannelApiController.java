@@ -33,6 +33,7 @@ public class ChannelApiController implements ChannelApi {
     }
 
     public ResponseEntity<List<Channel>> searchChannel(@ApiParam(value = "pass an optional search id for looking up channel") @RequestParam(value = "idChannel", required = false) String idChannel) {
+
         // do some magic!
         return new ResponseEntity<List<Channel>>(HttpStatus.OK);
     }
