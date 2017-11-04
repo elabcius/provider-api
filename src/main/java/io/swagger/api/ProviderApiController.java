@@ -10,6 +10,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -35,11 +36,16 @@ public class ProviderApiController implements ProviderApi {
     public ResponseEntity<Void> addProvider(@ApiParam(value = "Provider to add") @RequestBody Provider provider) {
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.set("Provider", "addProvider");
+
+        providerUtil.addMockProvider(provider);
         return new ResponseEntity<Void>(responseHeaders, HttpStatus.OK);
     }
 
     public ResponseEntity<Void> deleteProvider(@ApiParam(value = "Provider to delete") @RequestBody Provider provider) {
-        // do some magic!
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("Provider", "addProvider");
+
+        providerUtil.deleteProvider(provider);
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
@@ -58,8 +64,9 @@ public class ProviderApiController implements ProviderApi {
             providerList = providerUtil.getMockProviderList();
         }
         for (Provider provider : providerList) {
-            provider.add(addLinkToProvider(provider));
-
+            if (CollectionUtils.isEmpty(provider.getLinks())) {
+                provider.add(addLinkToProvider(provider));
+            }
             getChannelList(provider.getChannel());
         }
         return providerList;
@@ -68,8 +75,9 @@ public class ProviderApiController implements ProviderApi {
     private List<Channel> getChannelList(List<Channel> channelListEntry){
         List<Channel> channelList = channelListEntry;
         for (Channel channel: channelList){
-
-            channel.add(addLinkToChannel(channel));
+            if (CollectionUtils.isEmpty(channel.getLinks())) {
+                channel.add(addLinkToChannel(channel));
+            }
         }
         return  channelList;
     }

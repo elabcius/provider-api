@@ -10,6 +10,8 @@ import java.util.List;
 
 public class ProviderUtil {
 
+    private List<Provider> providerList = new ArrayList<>();
+
     public Provider getMockProvider(String idProvider, String nameProvider, String emailProvider) {
         Provider provider = new Provider();
         provider.id(idProvider);
@@ -20,35 +22,38 @@ public class ProviderUtil {
         return provider;
     }
 
-    public List<Provider> getMockProviderList() {
-        List<Provider> providerList = new ArrayList<>();
-
+    public ProviderUtil() {
         providerList.add(getMockProvider("1", "HBO", "support@hbo.com"));
         providerList.add(getMockProvider("2", "FOX Premium", "support@fox.com"));
+    }
 
+    public List<Provider> getMockProviderList() {
         return providerList;
     }
 
     public List<Provider> getMockOneProviderList(String idProvider) {
-        List<Provider> providerList = new ArrayList<>();
+        List<Provider> providers = new ArrayList<>();
+        providerList.forEach(provider -> {
+            if (provider.getProviderId().equalsIgnoreCase(idProvider)) {
+             providers.add(provider);
+            }
+        });
 
-        if (idProvider.equals("1")) {
-            providerList.add(getMockProvider("1", "HBO", "support@hbo.com"));
-        } else {
-            providerList.add(getMockProvider("2", "FOX Premium", "support@fox.com"));
-        }
-
-        return providerList;
+        return providers;
     }
 
     public void addMockProvider(Provider provider){
-        
+        providerList.add(provider);
+    }
+
+    public void deleteProvider(Provider provider) {
+        providerList.remove(provider);
     }
 
     private TvProgramming getMockTvProgramming(String idTvProgramming) {
         TvProgramming tvProgramming = new TvProgramming();
 
-        tvProgramming.setId("1");
+        tvProgramming.setIdentification("1");
         tvProgramming.setName("Series");
         tvProgramming.setTvPrograms(getMockTvProgram());
 
@@ -59,13 +64,13 @@ public class ProviderUtil {
         List<TvProgram> tvProgramList = new ArrayList<>();
 
         TvProgram tvProgram1 = new TvProgram();
-        tvProgram1.setId("1");
+        tvProgram1.setIdentification("1");
         tvProgram1.setName("Spartacus");
         tvProgram1.setScheduleTime("10-10-2012T08:00");
         tvProgramList.add(tvProgram1);
 
         TvProgram tvProgram2 = new TvProgram();
-        tvProgram2.setId("2");
+        tvProgram2.setIdentification("2");
         tvProgram2.setName("House of Cards");
         tvProgram2.setScheduleTime("10-11-2017T22:00");
         tvProgramList.add(tvProgram2);
