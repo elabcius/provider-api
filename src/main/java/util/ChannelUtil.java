@@ -3,6 +3,7 @@ package util;
 import io.swagger.model.Channel;
 import io.swagger.model.TvProgram;
 import io.swagger.model.TvProgramming;
+import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -48,8 +49,23 @@ public class ChannelUtil {
     return tvPrograms;
   }
 
-  public static List<Channel> getChannels() {
-    return channels;
+  public static List<Channel> getChannels(String idChannel) {
+    if (StringUtils.isEmpty(idChannel)) {
+      return channels;
+    } else {
+      return getChannel(idChannel);
+    }
+  }
+
+  private static List<Channel> getChannel(String idChannel) {
+    List<Channel> channelList = new ArrayList<>();
+    channels.forEach(channel -> {
+      if (channel.getChannelId().equalsIgnoreCase(idChannel)) {
+        channelList.add(channel);
+      }
+    });
+
+    return channelList;
   }
 
   public static void setChannel(Channel channel) {

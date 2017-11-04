@@ -43,7 +43,7 @@ public class ChannelApiController implements ChannelApi {
 
     public ResponseEntity<List<Channel>> searchChannel(@ApiParam(value = "pass an optional search id for looking up channel") @RequestParam(value = "idChannel", required = false) String idChannel) {
 
-        List<Channel> channels = ChannelUtil.getChannels();
+        List<Channel> channels = ChannelUtil.getChannels(idChannel);
         channels.forEach(channel -> {
             if (CollectionUtils.isEmpty(channel.getLinks())) {
                 Link selfLink = linkTo(methodOn(ChannelApiController.class).searchChannel(channel.getChannelId())).withSelfRel();
