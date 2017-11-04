@@ -7,43 +7,57 @@ import io.swagger.model.TvProgramming;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 public class ChannelUtil {
 
-  public static List<Channel> getChannels() {
-    List<Channel> channels = new ArrayList<>();
+  private static List<Channel> channels = new ArrayList<>();
+
+  public static void buildChannels() {
     Channel channel;
     TvProgramming tvProgramming;
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 1; i++) {
       channel = new Channel();
-      channel.setId(UUID.fromString("" + i).toString());
+      channel.setChannelId("d290f1ee-6c54-4b01-90e6-d701748f085" + i);
       channel.setName("Channel " + i);
       channel.setType("Type " + i);
 
       tvProgramming = new TvProgramming();
-      tvProgramming.setId(UUID.fromString("" + i).toString());
+      tvProgramming.setIdentification(i + "290f1ee-6c54-4b01-90e6-d701748f0851");
       tvProgramming.setName("Programming " + i);
-      tvProgramming.setTvPrograms(getPrograms());
+      tvProgramming.setTvPrograms(buildPrograms());
 
       channel.setTvProgramming(tvProgramming);
+
+      channels.add(channel);
     }
 
-    return channels;
   }
 
-  private static List<TvProgram> getPrograms() {
+  private static List<TvProgram> buildPrograms() {
     List<TvProgram> tvPrograms = new ArrayList<>();
     TvProgram tvProgram;
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 1; i++) {
       tvProgram = new TvProgram();
-      tvProgram.setId(UUID.fromString("" + i).toString());
-      tvProgram.setName("Channel " + i);
+      tvProgram.setIdentification("d290f1ee-6c54-4b0"+i+"-90e6-d701748f0851");
+      tvProgram.setName("Program " + i);
       tvProgram.setScheduleTime(new Date().toString());
+
+      tvPrograms.add(tvProgram);
     }
 
     return tvPrograms;
   }
 
+  public static List<Channel> getChannels() {
+    return channels;
+  }
+
+  public static void setChannel(Channel channel) {
+    channels.add(channel);
+  }
+
+  public static void removeChannel(Channel channel) {
+    channels.remove(channel);
+  }
 
 }

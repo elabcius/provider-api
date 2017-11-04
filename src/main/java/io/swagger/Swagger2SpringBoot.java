@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+import util.ChannelUtil;
 
 @SpringBootApplication
 @EnableSwagger2
@@ -22,6 +23,7 @@ public class Swagger2SpringBoot implements CommandLineRunner {
 
 	public static void main(String[] args) throws Exception {
 		new SpringApplication(Swagger2SpringBoot.class).run(args);
+		ChannelUtil.buildChannels();
 	}
 
 	class ExitException extends RuntimeException implements ExitCodeGenerator {

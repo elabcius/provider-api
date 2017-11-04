@@ -1,1 +1,3 @@
 providers-api.iml
+*.class
+*.lst
