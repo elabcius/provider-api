@@ -2,10 +2,7 @@ package io.swagger.model;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import io.swagger.model.TvProgramming;
 import org.springframework.hateoas.ResourceSupport;
 
 /**
@@ -14,8 +11,8 @@ import org.springframework.hateoas.ResourceSupport;
 @javax.annotation.Generated(value = "class io.swagger.codegen.languages.SpringCodegen", date = "2017-11-04T14:39:56.794Z")
 
 public class Channel extends ResourceSupport {
-  @JsonProperty("id")
-  private String id = null;
+  @JsonProperty("channelId")
+  private String channelId = null;
 
   @JsonProperty("name")
   private String name = null;
@@ -27,21 +24,21 @@ public class Channel extends ResourceSupport {
   private TvProgramming tvProgramming = null;
 
   public Channel id(String id) {
-    this.id = id;
+    this.channelId = id;
     return this;
   }
 
    /**
-   * Get id
-   * @return id
+   * Get channelId
+   * @return channelId
   **/
   @ApiModelProperty(example = "d290f1ee-6c54-4b01-90e6-d701748f0851", required = true, value = "")
   public String getChannelId() {
-    return id;
+    return channelId;
   }
 
   public void setChannelId(String id) {
-    this.id = id;
+    this.channelId = id;
   }
 
   public Channel name(String name) {
@@ -108,15 +105,12 @@ public class Channel extends ResourceSupport {
       return false;
     }
     Channel channel = (Channel) o;
-    return Objects.equals(this.id, channel.id) &&
-        Objects.equals(this.name, channel.name) &&
-        Objects.equals(this.type, channel.type) &&
-        Objects.equals(this.tvProgramming, channel.tvProgramming);
+    return Objects.equals(this.channelId, channel.channelId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, type, tvProgramming);
+    return Objects.hash(channelId);
   }
 
   @Override
@@ -124,7 +118,7 @@ public class Channel extends ResourceSupport {
     StringBuilder sb = new StringBuilder();
     sb.append("class Channel {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    channelId: ").append(toIndentedString(channelId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    tvProgramming: ").append(toIndentedString(tvProgramming)).append("\n");

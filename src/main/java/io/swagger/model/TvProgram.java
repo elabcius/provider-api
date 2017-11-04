@@ -2,8 +2,6 @@ package io.swagger.model;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
@@ -12,8 +10,8 @@ import io.swagger.annotations.ApiModelProperty;
 @javax.annotation.Generated(value = "class io.swagger.codegen.languages.SpringCodegen", date = "2017-11-04T14:39:56.794Z")
 
 public class TvProgram   {
-  @JsonProperty("id")
-  private String id = null;
+  @JsonProperty("identification")
+  private String identification = null;
 
   @JsonProperty("name")
   private String name = null;
@@ -22,21 +20,21 @@ public class TvProgram   {
   private String scheduleTime = null;
 
   public TvProgram id(String id) {
-    this.id = id;
+    this.identification = id;
     return this;
   }
 
    /**
-   * Get id
-   * @return id
+   * Get identification
+   * @return identification
   **/
   @ApiModelProperty(example = "d290f1ee-6c54-4b01-90e6-d701748f0851", required = true, value = "")
-  public String getId() {
-    return id;
+  public String getIdentification() {
+    return identification;
   }
 
-  public void setId(String id) {
-    this.id = id;
+  public void setIdentification(String identification) {
+    this.identification = identification;
   }
 
   public TvProgram name(String name) {
@@ -85,14 +83,14 @@ public class TvProgram   {
       return false;
     }
     TvProgram tvProgram = (TvProgram) o;
-    return Objects.equals(this.id, tvProgram.id) &&
+    return Objects.equals(this.identification, tvProgram.identification) &&
         Objects.equals(this.name, tvProgram.name) &&
         Objects.equals(this.scheduleTime, tvProgram.scheduleTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, scheduleTime);
+    return Objects.hash(identification, name, scheduleTime);
   }
 
   @Override
@@ -100,7 +98,7 @@ public class TvProgram   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TvProgram {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    identification: ").append(toIndentedString(identification)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    scheduleTime: ").append(toIndentedString(scheduleTime)).append("\n");
     sb.append("}");
